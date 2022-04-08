@@ -28,4 +28,8 @@ public class Tecnico {
 	@Getter @Setter
 	private LocalDate dataDeAdmissao;
 	
+	public boolean isNovo() {
+		return this.getId() == null || this.getId() == 0;
+	}
+	
 }
