@@ -1,6 +1,5 @@
 package br.com.senai.manutencaosenaiapi.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -32,15 +31,15 @@ public class PecaService {
 		Peca pecaAtualizada = repository.save(pecaSalva);
 		return pecaAtualizada;
 	}
+	
+	public void removerPor(
+			@NotNull(message = "O id da peça para remoção não pode ser nulo") @Min(value = 1, message = "O id deve ser maior que zero") Integer id) {
+		this.repository.deleteById(id);
+	}
 
 	public List<Peca> listarPor(
 			@NotEmpty(message = "A descrição para busca é obrigatória") @NotBlank(message = "A descrição para busca não deve conter espaços em branco") String descricao) {
-		return new ArrayList<Peca>();
-	}
-
-	public void removerPor(
-			@NotNull(message = "O id para remoção não pode ser nulo") @Min(value = 1, message = "O id deve ser maior que zero") Integer id) {
-
+		return repository.listarPor("%" + descricao + "%");
 	}
 
 }
