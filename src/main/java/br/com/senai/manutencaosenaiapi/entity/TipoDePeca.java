@@ -21,7 +21,7 @@ public class TipoDePeca {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@EqualsAndHashCode.Include
-	private int id;
+	private Integer id;
 	@Column(name = "descricao")
 	@NotEmpty(message = "A descrição é obrigatória")
 	@Size(max = 150, message = "A descrição não deve conter mais de 150 caracteres")
