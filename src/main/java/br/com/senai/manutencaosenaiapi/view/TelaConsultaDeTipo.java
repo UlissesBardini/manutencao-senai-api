@@ -62,8 +62,7 @@ public class TelaConsultaDeTipo extends JFrame {
 				table.setModel(model);
 				TableColumnModel cm = table.getColumnModel();
 				cm.getColumn(0).setPreferredWidth(50);
-				cm.getColumn(1).setPreferredWidth(470);
-				cm.getColumn(2).setPreferredWidth(80);
+				cm.getColumn(1).setPreferredWidth(550);
 				table.updateUI();
 			}
 		});

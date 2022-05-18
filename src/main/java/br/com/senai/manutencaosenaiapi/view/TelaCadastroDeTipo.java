@@ -69,13 +69,13 @@ public class TelaCadastroDeTipo extends JFrame {
 						tipoSalvo.setDescricao(edtDescricao.getText());
 						tipoSalvo.setId(Integer.parseInt(edtId.getText()));
 						service.alterar(tipoSalvo);
-						JOptionPane.showMessageDialog(contentPane, "Peça alterada com sucesso");
+						JOptionPane.showMessageDialog(contentPane, "Tipo alterado com sucesso");
 					} else {
 						TipoDePeca novoTipo = new TipoDePeca();
 						novoTipo.setDescricao(edtDescricao.getText());
 						TipoDePeca tipoSalvo = service.inserir(novoTipo);
 						edtId.setText(tipoSalvo.getId().toString());
-						JOptionPane.showMessageDialog(contentPane, "Peça inserida com sucesso");
+						JOptionPane.showMessageDialog(contentPane, "Tipo inserido com sucesso");
 					}
 
 				} catch (Exception ex) {
