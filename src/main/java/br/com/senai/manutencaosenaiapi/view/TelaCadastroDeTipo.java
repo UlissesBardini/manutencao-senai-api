@@ -35,13 +35,13 @@ public class TelaCadastroDeTipo extends JFrame {
 
 	@Autowired
 	@Lazy
-	private TelaConsultaDePeca telaDeConsulta;
+	private TelaConsultaDeTipo telaDeConsulta;
 
 	/**
 	 * Create the frame.
 	 */
 	public TelaCadastroDeTipo() {
-		setTitle("Cadastro de Peça");
+		setTitle("Cadastro de Tipo");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 516, 127);
 		contentPane = new JPanel();
@@ -93,46 +93,47 @@ public class TelaCadastroDeTipo extends JFrame {
 			}
 		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
+		gl_contentPane.setHorizontalGroup(gl_contentPane
+				.createParallelGroup(
+						Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(edtId, GroupLayout.PREFERRED_SIZE, 56, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblId))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(lblDescricao)
-							.addGap(392))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(edtDescricao, GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
-							.addContainerGap())))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addComponent(btnCancelar)
-					.addPreferredGap(ComponentPlacement.RELATED, 352, Short.MAX_VALUE)
-					.addComponent(btnSalvar)
-					.addContainerGap())
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblId)
-						.addComponent(lblDescricao))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(edtId, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(edtDescricao, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 223, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnCancelar)
-						.addComponent(btnSalvar)))
-		);
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(edtId, GroupLayout.PREFERRED_SIZE, 56, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblId))
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup().addComponent(lblDescricao).addGap(392))
+								.addGroup(
+										gl_contentPane.createSequentialGroup()
+												.addComponent(edtDescricao, GroupLayout.DEFAULT_SIZE, 428,
+														Short.MAX_VALUE)
+												.addContainerGap())))
+				.addGroup(gl_contentPane.createSequentialGroup().addComponent(btnCancelar)
+						.addPreferredGap(ComponentPlacement.RELATED, 352, Short.MAX_VALUE).addComponent(btnSalvar)
+						.addContainerGap()));
+		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
+				.createSequentialGroup()
+				.addGroup(gl_contentPane
+						.createParallelGroup(Alignment.BASELINE).addComponent(lblId).addComponent(lblDescricao))
+				.addPreferredGap(ComponentPlacement.RELATED)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(edtId, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								GroupLayout.PREFERRED_SIZE)
+						.addComponent(edtDescricao, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
+								GroupLayout.PREFERRED_SIZE))
+				.addPreferredGap(ComponentPlacement.RELATED, 223, Short.MAX_VALUE).addGroup(gl_contentPane
+						.createParallelGroup(Alignment.BASELINE).addComponent(btnCancelar).addComponent(btnSalvar))));
 		contentPane.setLayout(gl_contentPane);
 	}
 
 	public void colocarEmEdicao(TipoDePeca tipoSalvo) {
 		edtId.setText(tipoSalvo.getId().toString());
 		edtDescricao.setText(tipoSalvo.getDescricao());
+	}
+
+	public void colocarEmInclusao() {
+		edtId.setText("");
+		edtDescricao.setText("");
+		setVisible(true);
 	}
 }

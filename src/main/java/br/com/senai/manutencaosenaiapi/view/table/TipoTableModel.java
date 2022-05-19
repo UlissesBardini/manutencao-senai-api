@@ -12,8 +12,8 @@ public class TipoTableModel extends AbstractTableModel {
 	private final int QTDE_COLUNAS = 3;
 	private List<TipoDePeca> tipos;
 
-	public TipoTableModel(List<TipoDePeca> pecas) {
-		this.tipos = pecas;
+	public TipoTableModel(List<TipoDePeca> tipos) {
+		this.tipos = tipos;
 	}
 
 	@Override

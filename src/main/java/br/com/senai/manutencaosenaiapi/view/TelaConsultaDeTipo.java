@@ -42,7 +42,7 @@ public class TelaConsultaDeTipo extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaConsultaDeTipo() {
-		setTitle("Tela de Consulta de Peça");
+		setTitle("Tela de Consulta de Tipo");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 520, 400);
 		contentPane = new JPanel();
@@ -70,7 +70,7 @@ public class TelaConsultaDeTipo extends JFrame {
 		JButton btnAdicionar = new JButton("Adicionar");
 		btnAdicionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				telaDeCadastro.setVisible(true);
+				telaDeCadastro.colocarEmInclusao();
 				setVisible(false);
 			}
 		});
@@ -112,8 +112,8 @@ public class TelaConsultaDeTipo extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				int linhaSelecionada = table.getSelectedRow();
 				TipoTableModel model = (TipoTableModel) table.getModel();
-				TipoDePeca pecaSelecionada = model.getPor(linhaSelecionada);
-				telaDeCadastro.colocarEmEdicao(pecaSelecionada);
+				TipoDePeca tipoSelecionado = model.getPor(linhaSelecionada);
+				telaDeCadastro.colocarEmEdicao(tipoSelecionado);
 				telaDeCadastro.setVisible(true);
 				setVisible(false);
 			}

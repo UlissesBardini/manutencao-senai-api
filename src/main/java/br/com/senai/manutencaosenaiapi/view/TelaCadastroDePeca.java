@@ -94,7 +94,7 @@ public class TelaCadastroDePeca extends JFrame {
 			}
 		});
 
-		JLabel lblQtde = new JLabel("Qtde");
+		JLabel lblQtde = new JLabel("Quantidade");
 
 		edtQtde = new JTextField();
 		edtQtde.setColumns(10);
@@ -162,5 +162,13 @@ public class TelaCadastroDePeca extends JFrame {
 		edtDescricao.setText(pecaSalva.getDescricao());
 		jtaEspecificacoes.setText(pecaSalva.getEspecificacoes());
 		edtQtde.setText(pecaSalva.getQtdeEmEstoque().toString());
+	}
+	
+	public void colocarEmInclusao() {
+		edtId.setText("");
+		edtDescricao.setText("");
+		jtaEspecificacoes.setText("");
+		edtQtde.setText("");
+		setVisible(true);
 	}
 }
