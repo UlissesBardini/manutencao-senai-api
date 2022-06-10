@@ -9,10 +9,12 @@ import br.com.senai.manutencaosenaiapi.entity.Peca;
 public class PecaTableModel extends AbstractTableModel {
 
 	private static final long serialVersionUID = 1L;
-	private final int QTDE_COLUNAS = 3;
-	private List<Peca> pecas;
 
-	public PecaTableModel(List<Peca> pecas) {
+	private final int QTDE_COLUNAS = 3;
+	
+	private List<Peca> pecas;	
+	
+	public PecaTableModel(List<Peca> pecas) {	
 		this.pecas = pecas;
 	}
 
@@ -30,12 +32,12 @@ public class PecaTableModel extends AbstractTableModel {
 	public String getColumnName(int column) {
 		if (column == 0) {
 			return "ID";
-		} else if (column == 1) {
+		}else if (column == 1) {
 			return "Descrição";
-		} else if (column == 2) {
-			return "Quantidade";
+		}else if (column == 2) {
+			return "QTDE";
 		}
-		throw new IllegalArgumentException("Índice inválido");
+		throw new IllegalArgumentException("Indice inválido");
 	}
 	
 	public Peca getPor(int rowIndex) {
@@ -48,16 +50,16 @@ public class PecaTableModel extends AbstractTableModel {
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-
+		
 		if (columnIndex == 0) {
 			return pecas.get(rowIndex).getId();
-		} else if (columnIndex == 1) {
+		}else if (columnIndex == 1) {
 			return pecas.get(rowIndex).getDescricao();
-		} else if (columnIndex == 2) {
+		}else if (columnIndex == 2) {
 			return pecas.get(rowIndex).getQtdeEmEstoque();
 		}
 		
-		throw new IllegalArgumentException("Índice inválido");
+		throw new IllegalArgumentException("Indice inválido");
 	}
 
 }

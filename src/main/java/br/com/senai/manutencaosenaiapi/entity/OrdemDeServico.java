@@ -30,29 +30,41 @@ public class OrdemDeServico {
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_cliente")
 	@NotNull(message = "O cliente da ordem não pode ser nulo")
 	private Cliente cliente;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_tecnico")
 	@NotNull(message = "O técnico da ordem não pode ser nulo")
 	private Tecnico tecnico;
+	
 	@Column(name = "dt_abertura")
-	@NotNull(message = "A data de abertura é obrigatória!")
-	@PastOrPresent(message = "A data de abertura da ordem não pode ser posterior à data atual")
+	@NotNull(message = "A data de abertura é obrigatória")
+	@PastOrPresent(message = "A data de abertura não pode "
+			+ "ser posterior a data atual")
 	private LocalDate dataDeAbertura;
+	
 	@Column(name = "dt_encerramento")
-	@PastOrPresent(message = "A data de encerramento da ordem não pode ser posterior à data atual")
+	@PastOrPresent(message = "A data de encerramento não "
+			+ "pode ser posterior a data atual")
 	private LocalDate dataDeEncerramento;
+	
 	@Column(name = "desc_problema")
-	@NotNull(message = "A descrição do problema é obrigatória")
+	@NotEmpty(message = "A descrição do problema é obrigatória")
 	@NotBlank(message = "A descrição do problema não foi informada")
 	private String descricaoDoProblema;
+	
 	@Column(name = "desc_reparo")
 	private String descricaoDoReparo;
+	
 	@ManyToMany
-	@JoinTable(name = "pecas_reparos", joinColumns = @JoinColumn(name = "id_ordem"), inverseJoinColumns = @JoinColumn(name = "id_peca"))
+	@JoinTable(
+		name = "pecas_reparos",
+		joinColumns = @JoinColumn(name = "id_ordem"),
+		inverseJoinColumns = @JoinColumn(name = "id_peca"))
 	@NotEmpty(message = "Deve haver ao menos uma peça de reparo")
 	private List<Peca> pecasDoReparo;
 	

@@ -21,35 +21,47 @@ import br.com.senai.manutencaosenaiapi.repository.TecnicosRepository;
 @Service
 @Validated
 public class TecnicoService {
-	
+
 	@Autowired
 	private TecnicosRepository repository;
-
-	public Tecnico inserir(@Valid @NotNull(message = "O técnico não pode ser nulo") Tecnico novoTecnico) {
-		Preconditions.checkArgument(novoTecnico.isNovo(), "O técnico já foi salvo");
-		Tecnico tecnicoSalvo = repository.save(novoTecnico);
-		return tecnicoSalvo;
+	
+	public Tecnico inserir(
+			@Valid
+			@NotNull(message = "O técnico não pode ser nulo")
+			Tecnico novoTecnico) {			
+		Preconditions.checkArgument(novoTecnico.isNovo(),
+				"O técnico já foi salvo");
+		Tecnico tecnicoSalvo = repository.save(novoTecnico);	
+		return tecnicoSalvo;				
 	}
-
-	public Tecnico alterar(@Valid @NotNull(message = "O técnico não pode ser nulo") Tecnico tecnicoSalvo) {
-		Preconditions.checkArgument(!tecnicoSalvo.isNovo(), "O técnico ainda não foi salvo");
+	
+	public Tecnico alterar(
+			@Valid
+			@NotNull(message = "O técnico não pode ser nulo")
+			Tecnico tecnicoSalvo) {
+		Preconditions.checkArgument(!tecnicoSalvo.isNovo(), 
+				"O técnico ainda não foi inserido");
 		Tecnico tecnicoAtualizado = repository.save(tecnicoSalvo);
 		return tecnicoAtualizado;
 	}
-
+	
 	public List<Tecnico> listarPor(
-			@NotEmpty(message = "O nome para busca não pode ser nulo") @NotBlank(message = "O nome para busca não pode ser em branco") String nome) {
-		return repository.listarPor("%" + nome + "%");
+			@NotEmpty(message = "O nome para busca não pode ser nulo")
+			@NotBlank(message = "Não pode haver espaços antes do nome")
+			String nome){
+		return repository.listarPor("%" + nome + "%");		
 	}
-
+	
 	@Transactional
 	public void removerPor(
-			@NotNull(message = "O id não pode ser nulo") @Min(value = 100, message = "O id deve maior que 0") Integer id) {
+			@NotNull(message = "O id de exclusão não pode ser nulo")
+			@Min(value = 1, message = "O id deve ser maior que zero")
+			Integer id) {
 		this.repository.deletarPor(id);
 	}
 	
 	public Tecnico buscarPor(Integer id) {
 		return repository.findById(id).get();
 	}
-
+	
 }

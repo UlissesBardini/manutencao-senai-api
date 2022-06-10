@@ -19,21 +19,27 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Peca {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@EqualsAndHashCode.Include
 	private Integer id;
+	
 	@Column(name = "descricao")
 	@NotEmpty(message = "A descrição é obrigatória")
-	@Size(max = 150, message = "A descrição não deve conter mais de 150 caracteres")
+	@Size(max = 150, message = "A descrição deve conter "
+			+ "mais de 150 caracteres")
 	private String descricao;
+	
 	@Column(name = "especificacoes")
-	@Size(max = 400, message = "A especificação não deve conter mais de 400 caracteres")
+	@Size(max = 400, message = "A especificação não deve conter "
+			+ "mais de 400 caracteres")
 	private String especificacoes;
+	
 	@Column(name = "qtde_estoque")
 	@NotNull(message = "A quantidade é obrigatória")
-	@Min(value = 0, message = "A quantidade não pode ser menor que zero")
+	@Min(value = 0, message = "A quantidade não "
+			+ "pode ser menor que zero")
 	private Integer qtdeEmEstoque;
-
+	
 }

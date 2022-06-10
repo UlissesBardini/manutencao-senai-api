@@ -10,9 +10,13 @@ import org.springframework.stereotype.Repository;
 import br.com.senai.manutencaosenaiapi.entity.Cliente;
 
 @Repository
-public interface ClientesRepository extends JpaRepository<Cliente, Integer> {
+public interface ClientesRepository 
+		extends JpaRepository<Cliente, Integer>{
 	
-	@Query(value="SELECT c FROM Cliente c WHERE Upper(c.nome) LIKE Upper(:nome)")
-	List<Cliente> listarPor(@Param("nome")String nome);
+	@Query(value = 
+			"SELECT c "
+			+ "FROM Cliente c "
+			+ "WHERE Upper(c.nome) LIKE Upper(:nome)")
+	List<Cliente> listarPor(@Param("nome") String nome);
 	
 }
