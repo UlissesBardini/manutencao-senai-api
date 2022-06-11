@@ -42,4 +42,8 @@ public class Peca {
 			+ "pode ser menor que zero")
 	private Integer qtdeEmEstoque;
 	
+	public String toString() {
+		return this.id + " - " + this.descricao;
+	}
+	
 }

@@ -19,12 +19,10 @@ import javax.validation.constraints.Pattern;
 import br.com.senai.manutencaosenaiapi.enums.Sexo;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.ToString;
 
 @Entity(name = "Cliente")
 @Table(name = "clientes")
 @Data
-@ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Cliente {
 	
@@ -60,6 +58,10 @@ public class Cliente {
 	@NotNull(message = "A data de nascimento é obrigatória")
 	@Past(message = "A data de nascimento deve ser anterior a data atual")
 	private LocalDate dataDeNascimento;
+	
+	public String toString() {
+		return this.id + " - " + this.nome + " " + this.sobrenome;
+	}
 	
 	@Transient
 	public Integer getIdade() {

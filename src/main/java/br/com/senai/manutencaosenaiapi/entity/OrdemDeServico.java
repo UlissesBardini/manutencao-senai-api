@@ -65,7 +65,6 @@ public class OrdemDeServico {
 		name = "pecas_reparos",
 		joinColumns = @JoinColumn(name = "id_ordem"),
 		inverseJoinColumns = @JoinColumn(name = "id_peca"))
-	@NotEmpty(message = "Deve haver ao menos uma peça de reparo")
 	private List<Peca> pecasDoReparo;
 	
 }

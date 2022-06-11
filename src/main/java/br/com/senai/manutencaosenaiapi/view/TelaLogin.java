@@ -17,6 +17,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import br.com.senai.manutencaosenaiapi.entity.Login;
@@ -32,6 +33,8 @@ public class TelaLogin extends JFrame {
 	private JComboBox<String> cbPerfil;
 	@Autowired
 	LoginService service;
+	@Autowired
+	private TelaOrdemDeServico telaDeOrdem;
 	
 	private void carregarOpcoes() {
 		this.cbPerfil.addItem("Atendente");
@@ -63,6 +66,7 @@ public class TelaLogin extends JFrame {
 					Login loginEncontrado = service.logar(login, senha, cbPerfil.getSelectedItem().toString());
 					if (loginEncontrado.getPerfil().equals(cbPerfil.getItemAt(0))) {
 						JOptionPane.showMessageDialog(contentPane, "Seja bem vindo, " + loginEncontrado.getLogin() + "\nPerfil: " + cbPerfil.getSelectedItem());
+						telaDeOrdem.apresentarTela();
 					} else {
 						JOptionPane.showMessageDialog(contentPane, "Técnico acessando");
 					}

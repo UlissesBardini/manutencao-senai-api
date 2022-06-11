@@ -17,11 +17,9 @@ import javax.validation.constraints.Size;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 @Entity(name = "Tecnico")
 @Table(name = "tecnicos")
-@ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Tecnico {
 	
@@ -42,6 +40,10 @@ public class Tecnico {
 	@PastOrPresent(message = "A data de admissão não pode ser posterior a data atual")
 	@Getter @Setter
 	private LocalDate dataDeAdmissao;
+	
+	public String toString() {
+		return this.id + " - " + this.nomeCompleto;
+	}
 	
 	@Transient
 	public boolean isNovo() {

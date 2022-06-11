@@ -8,9 +8,9 @@ import org.springframework.stereotype.Repository;
 import br.com.senai.manutencaosenaiapi.entity.OrdemDeServico;
 
 @Repository
-public interface OrdemDeServicoRepository extends JpaRepository<OrdemDeServico, Integer>{
-	
+public interface OrdemDeServicoRepository extends JpaRepository<OrdemDeServico, Integer> {
+
 	@Query(value = "SELECT o FROM OrdemDeServico o JOIN FETCH o.cliente JOIN FETCH o.tecnico JOIN FETCH o.pecasDoReparo WHERE o.id = :id")
 	OrdemDeServico buscarPor(@Param("id") Integer id);
-	
+
 }
